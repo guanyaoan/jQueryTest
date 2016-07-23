@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8">
+        <style type="text/css" media="screen">
+            .left div,
+                .right div {
+                    width: 350px;
+                    height: 150px;
+                    padding: 5px;
+                    margin: 5px;
+                    border: 1px solid #ccc;
+                }
+
+                p {
+                    height: 50px;
+                    border: 1px solid red;
+                    margin: 30px;
+                }
+
+                .left div {
+                    background: #bbffaa;
+                }
+        </style>
+        <script src="jquery-3.0.0.js"></script>
+        <script>
+        window.onload=function(){
+            // hover()方法是同时绑定 mouseenter和 mouseleave事件。
+               // 我们可以用它来简单地应用在 鼠标在元素上行为
+               $(".aaron1 p").hover(
+                    function(){
+                        $(this).css('background','green');
+                    },
+                    function(){
+                        $(this).css('background','yellow');
+                    }
+                );
+        }
+        </script>
+    </head>
+    <body>
+        <h2>.hover()方法</h2>
+            <div class="left">
+                <div class="aaron1">
+                    <p>触发hover事件</p>
+                </div>
+            </div>
+    </body>
+</html>

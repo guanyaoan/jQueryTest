@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8">
+        <style type="text/css" media="screen">
+            .left div,
+               .right div {
+                   width: 500px;
+                   height: 50px;
+                   padding: 5px;
+                   margin: 5px;
+                   float: left;
+                   border: 1px solid #ccc;
+               }
+
+               .left div {
+                   background: #bbffaa;
+               }
+
+               .right div {
+                   background: yellow;
+               }
+        </style>
+        <script src="jquery-3.0.0.js"></script>
+        <script>
+        window.onload=function(){
+            //focusin  与focus本质区别是是否支持冒泡
+                $(".aaron1").focusin(function(){
+                   $(this).find('input').val('点击触发焦点并冒泡');
+                })
+                //focus()在元素本身产生，focusin()在元素包含的元素中产生
+                $(".aaron").focus(function(){
+                   $(this).css('border','3px solid red');
+                })
+
+
+                //focusout 与blur
+                $(".aaron4").focusout(function(){
+                    $(this).find("input").val('点击触发失去焦点并冒泡');
+                })
+                //blur()在元素本身产生，focusout()在元素包含的元素中产生
+                $("aaron3").blur(function(){
+                    $(this).css('border','3px solid green');
+                })
+        }
+        </script>
+    </head>
+    <body>
+        <h4>.focusin与blur</h4>
+            <div class="left">
+                <div class="aaron">
+                    点击触发焦点(无反应)：
+                    <input type="text" />
+                </div>
+                <div class="aaron1">
+                    点击触发焦点并冒泡：
+                    <input type="text" />
+                </div>
+            </div><br/><br/><br/><br/>
+
+            <h4>.focusout与blur</h4>
+               <div class="right">
+                   <div class="aaron3">
+                       点击触发失去焦点(无反应)：
+                       <input type="text" />
+                   </div>
+                   <div class="aaron4">
+                       点击触发失去焦点并冒泡：
+                       <input type="text" />
+                   </div>
+               </div>
+    </body>
+</html>

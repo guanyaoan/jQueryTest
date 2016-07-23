@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8">
+        <style type="text/css" media="screen">
+            p{
+                       color:red;
+                   }
+        </style>
+        <script src="jquery-3.0.0.js"></script>
+        <script>
+        window.onload=function(){
+            //显示
+            $("#btnShow").click(function(){
+                $("p").show();
+            })
+
+            //淡出隐藏p元素
+            $("#btnFadeOut").click(function(){
+                var v=$("#animation").val();
+                if(v==1){
+                    $("p").fadeOut("slow");
+                }else if(v==2){
+                    $("p").fadeOut();
+                }else if(v==3){
+                    $("p").fadeOut("fast");
+                }else if(v==4){
+                    $("p").fadeOut(1000,function(){
+                        alert("淡出动画完毕");
+                    })
+                }else if(v==5){
+                    $("p").fadeOut(5000);
+                }
+            })
+        }
+        </script>
+    </head>
+    <body>
+        <h2>fadeOut</h2>
+           <p>测试文字淡入效果</p>
+           <p>慕课网,专注分享</p>
+           淡出的隐藏效果：
+           <select id="animation">
+               <option value="1">fadeOut("slow" )</option>
+               <option value="2">fadeOut()</option>
+               <option value="3">fadeOut("fast")</option>
+               <option value="4">fadeOut( 1000, complete )</option>
+               <option value="5">fadeOut( options )</option>
+           </select>
+
+           </br></br>
+
+           <input id="btnFadeOut" type="button" value="点击淡出隐藏" />
+           <input id="btnShow" type="button" value="显示" />
+    </body>
+</html>

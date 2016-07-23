@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8">
+        <style type="text/css" media="screen">
+            p {
+                   color: red;
+               }
+               div{
+                   width:200px;
+                   height: 100px;
+                   background-color: yellow;
+                   color:red;
+               }
+        </style>
+        <script src="jquery-3.0.0.js"></script>
+        <script>
+                window.onload=function(){
+                        $("#exec").click(function(){
+                            var v=$("#animation").val();
+                            if(v==1){
+                                    var index=$.inArray(3,[2,5,2,6,3,7]);
+                                $("#aaron").text('找到的索引值：'+index);
+                            }else if(v==2){
+                                var index2=$.inArray('a',['a','y','v','e','a','p'],2);
+                                $("#aaron").text("找到的索引值是："+index2);
+                            }
+                        })
+
+
+                }
+        </script>
+    </head>
+    <body>
+        <h2>inArray方法</h2>
+           <p>慕课网,专注分享</p>
+           <div id="aaron"></div>
+           点击观察结果：
+           <select id="animation">
+               <option value="1">inArray(目标值，数组)</option>
+               <option value="2">inArray(目标值，数组，查找开始值)</option>
+           </select>
+           <input id="exec" type="button" value="执行动画">
+    </body>
+</html>

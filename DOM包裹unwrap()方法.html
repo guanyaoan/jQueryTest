@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8">
+        <style type="text/css" media="screen">
+            .left,
+               .right {
+                   width: 250px;
+                   height: 120px;
+               }
+
+               .left div,
+               .right div {
+                   width: 100px;
+                   height: 120px;
+                   padding: 5px;
+                   margin: 5px;
+                   float: left;
+                   border: 1px solid #ccc;
+                   background: #bbffaa;
+               }
+
+               .right div {
+                   background: yellow;
+               }
+               p {
+                   border: 1px solid red;
+               }
+
+               a {
+                   border: 1px solid blue;
+               }
+        </style>
+        <script src="jquery-3.0.0.js"></script>
+        <script>
+        window.onload=function(){
+            $(".aaron1").on('click',function(){
+                //找到所有p元素，删除父容器div
+                $("p").unwrap('div');
+            })
+
+
+            $(".aaron2").on('click',function(){
+                $("a").unwrap(function(){
+                    return 'div';
+                })
+            })
+        }
+        </script>
+    </head>
+    <body>
+    <h2>DOM包裹unwrap()方法</h2>
+        <div class="left">
+            <div class="aaron1">点击,通过unwrap方法给p元素删除父容器div</div>
+            <div class="aaron2">点击,通过unwrap的回调方法给a元素删除父容器div</div>
+        </div>
+        <div class="right">
+            <div>
+                <p>p元素</p>
+            </div>
+            <div>
+                <p>p元素</p>
+            </div>
+        </div>
+        <div class="left">
+            <div>
+                <a>a元素</a>
+            </div>
+            <div>
+                <a>a元素</a>
+            </div>
+        </div>
+    </body>
+</html>

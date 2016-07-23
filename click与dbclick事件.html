@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8">
+        <style type="text/css" media="screen">
+            .test2 {
+                    background: #bbffaa;
+                }
+                .test3 {
+                    background: yellow;
+                }
+                .test2,.test3{
+                    border: 1px solid red;
+                }
+        </style>
+        <script src="jquery-3.0.0.js"></script>
+        <script>
+        window.onload=function(){
+            //this指向button元素
+            $("button:first").click(function(){
+                alert(this);
+            })
+
+
+            $(".test2 p").click(function(e){
+                alert(e.target.textContent);
+            })
+            //this指向button元素
+            $("button:eq(1)").click(function(){
+                $(".test2 p").click();
+                //指定触发绑定的事件
+            })
+
+
+            //不同函数传递数据
+            function data(e){
+                alert(e,data);
+            }
+
+            function a(){
+                $("button:eq(2)").click(1111,data);
+            }
+            a();
+        }
+        </script>
+    </head>
+    <body>
+        <h2>.click()方法</h2>
+
+           <h4>测试一</h4>
+           <button>元素绑定事件,弹出回调中的this</button>
+
+           <h4>测试二</h4>
+               <div class="test2">
+                   <p>$('button:first').click(function(e) {alert(this)})</p>
+               </div>
+               <button>指定触发事件</button>
+
+               <h4>测试三</h4>
+                   <div class="test3">
+                       <p>$('.right').click(1111, set)</p>
+                   </div>
+
+                   <button>不同函数传递数据</button>
+    </body>
+</html>

@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8">
+        <style type="text/css" media="screen">
+            p {
+                   color: red;
+               }
+               div{
+                   width:200px;
+                   height: 100px;
+                   background-color: yellow;
+                   color:red;
+               }
+        </style>
+        <script src="jquery-3.0.0.js"></script>
+        <script>
+        window.onload=function(){
+
+            $("#exec").click(function(){
+                var v=$("#animation").val();
+                //$("#aaron").empty();
+                if(v==1){
+                    // 遍历数组元素
+                    $.each(['第一个元素','第二个元素'],function(i,item){
+                        $("#aaron").append('索引：'+i+'<br>'+'元素：'+item+'<br>');
+                    })
+                }else if(v==2){
+                    //遍历对象属性
+                    $.each({
+                        name:'zhangsan',
+                        age:20
+                    },function(pro,val){
+                        $("#aaron").append('属性：'+pro+'<br>'+'值：'+val+'<br>');
+                    })
+                }
+            })
+        }
+        </script>
+    </head>
+    <body>
+        <h2>each方法</h2>
+           <p>慕课网,专注分享</p>
+           <div id="aaron"></div>
+           点击观察结果：
+           <select id="animation">
+               <option value="1">each数组</option>
+               <option value="2">each对象</option>
+           </select>
+           <input id="exec" type="button" value="执行动画">
+    </body>
+</html>

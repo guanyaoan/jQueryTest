@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8">
+        <style type="text/css" media="screen">
+            a {
+
+                   font-size: 30px;
+                   font-weight: 900;
+               }
+
+               div {
+                   width: 200px;
+                   height: 100px;
+                   background-color: yellow;
+                   color: red;
+               }
+        </style>
+        <script src="jquery-3.0.0.js"></script>
+        <script>
+        window.onload=function(){
+            $("#exec").click(function(){
+                var v=$("#animation").val();
+                if(v=='1'){
+                    $("#aaron a").get(1).style.color="blue"
+                }else if(v=='2'){
+                    $("#aaron a").get(-1).style.color="green"
+                }
+            })
+        }
+        </script>
+    </head>
+    <body>
+        <h2>get方法</h2>
+
+           <div id="aaron">
+               <a>1</a>
+               <a>2</a>
+               <a>3</a>
+               <a>4</a>
+               <a>5</a>
+           </div>
+
+           <select id="animation">
+               <option value="1">get正数索引参数</option>
+               <option value="2">get负数索引参数</option>
+           </select>
+           <input id="exec" type="button" value="点击执行">
+    </body>
+</html>

@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8">
+        <style type="text/css" media="screen">
+            .left div,
+               .right div {
+                   width: 500px;
+                   height: 50px;
+                   padding: 5px;
+                   margin: 5px;
+                   float: left;
+                   border: 1px solid #ccc;
+               }
+
+               .left div {
+                   background: #bbffaa;
+                   display: none;
+               }
+
+               .right div {
+                   background: yellow;
+               }
+        </style>
+        <script src="jquery-3.0.0.js"></script>
+        <script>
+        window.onload=function(){
+            $("button").click(function(){
+                $("#a1").slideToggle(3000);
+            })
+        }
+        </script>
+    </head>
+    <body>
+        <h2>slideToggle</h2>
+           <div class="left">
+               <div id="a1"></div>
+               <button>点击slideToggle上下卷滚切换</button>
+           </div>
+    </body>
+</html>

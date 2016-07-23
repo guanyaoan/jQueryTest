@@ -1,0 +1,210 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8">
+        <style type="text/css" media="screen">
+        body {
+            font-size: 15px;
+            line-height: 1.6;
+        }
+
+        p {
+            margin: 10px 0;
+        }
+            input.error {
+                border: 1px solid red;
+            }
+            input, button {
+                font-size: 15px;
+                line-height: 15px;
+                border: 1px solid #999;
+
+            }
+
+        </style>
+        <script src="jquery-3.0.0.js"></script>
+        <script src="jquery.validate.js"></script>
+        <script>
+        //以下3个方法可以直接在浏览器控制台写方法
+        // rules()获取表单元素的校验规则
+        // rules("add",rules)向表单元素增加校验规则
+                      //$("#userName").rules("add",{minlength:2,maxlength:10})
+        // reles("remove",rules)删除表单元素校验规则
+                      //$("#userName").rules("remove","email")
+
+
+        //validate()方法返回Validator对象，有以下方法：
+        //Validator.form()验证表单是否有效，返回true/false
+        //Validator.element(element)验证某个元素是否有效，返回true/false
+                        //Validator.element("#userName")
+        //Validator.resetForm()把表单恢复到验证前原来的状态
+        //Validator.showError(errors)针对某个元素显示特定的错误信息
+        //Validator.numberOfInvalids()返回无效的元素数量
+
+
+        //Validator对象还有很多有用的静态方法，可直接使用：
+        //jQuery.validator.addMethod(name,method[,message])增加自定义验证方法
+        //jQuery.validator.format(template,rgument,argumentN...)格式化字符串，用参数代替模板中的{n}
+        //JQuery.validator.setDefaults(options)修改插件默认设置
+        //jQuery.validator.addClassRules(name,rules)为某些包含名为name的class增加组合验证类型
+
+
+        //submitHandler通过验证后运行的函数，可以加上表单提交的方法
+        //invalidHandler无效表单提交后运行的函数
+        //ignore对某些元素不进行验证
+        //rules定义校验规则
+        //messages定义提示信息
+        //groups对一组元素的验证，用一个错误提示，用errorPlacement控制把出错信息放在哪里
+
+
+        //onsubmit是否在提交时验证
+        //onfocusout是否在获取焦点时验证
+        //onkeyup是否在敲击键盘时验证
+        //onclick是否在鼠标点击时验证，一般用于checkbox或radio
+        //focusInvalid提交表单后，未通过验证的表单(第一个或提交之前获得焦点的未通过验证的表单)是否会获得焦点
+        //focusCleanup当未通过验证的元素获得焦点时，是否移除错误提示
+
+
+        //errorClass指定错误提示的css类名，可以自定义错误提示的样式
+        //validClass指定验证通过的css类名
+        //errorElement使用什么标签标记错误
+        //wrapper使用什么标签把上边的errorElement包起来
+        //errorLabelContainer把错误信息统一放在一个容器里面
+        //errorContainer显示或者隐藏验证信息，可以自动实现有错误信息出现时把容器属性变为显示，无错误时隐藏
+
+
+        //showErrors可以显示总共有多少个未通过验证的元素
+        //errorPlacement自定义错误信息放到哪里
+        //success要验证的元素通过验证后的动作
+        //highlight可以给未通过验证的元素加效果
+        //unhighlight去除未通过验证的元素的效果，一般和highlight同时使用
+
+
+        //：blank选择所有值为空的元素
+        //：filled选择所有值不为空的元素
+        //：unchecked选择所有没有被选中的元素
+
+
+        //自定义验证方法
+        //jQuery.validator.addMethod(name,method[,message])
+        //name:方法名称
+        //method:function(value,element,params)方法逻辑
+        //message:提示消息
+        //additional-methods.js包含了很多扩展验证方法
+
+            var Validation;
+            $(document).ready(function(){
+            Validation=$("#demoPlugin").validate({
+                debug:true,//debug为true时，只校验表单，不提交表单
+                rules:{
+                    username:
+                    {
+                    required:true,//required是否必填
+                    //minlength:2,
+                    //maxlength:10,
+                    //rangelength:[2.10],
+                    //email:true,
+                    //url:true,
+                    //date:true,
+                    //dateISO:true//日期格式yyyy-mm-dd或yyyy/mm/dd
+                    //number:true,
+                    digits:true//只能是整数，不能有小数
+
+                },
+                    password:
+                    {
+                        required:true,
+                        minlength:2,
+                        maxlength:15
+                    },
+
+                    subpassword:
+                    {
+                       equalTo:"#passWord"
+                    }
+
+                },
+
+                messages:{
+                    username:
+                    {
+                    required:'请输入用户名',
+                    //minlength:'最小长度为2位',
+                    //maxlength:'最大长度为10位',
+                   // remote:'用户名不存在',
+                   // rangelength:'长度范围：最小2位最大10位'//长度范围
+                   //email:'请输入正确的邮箱地址',
+                   //url:'请输入正确的网址',
+                   //date:'请输入正确的日期',
+                   digits:'请输入整数'
+                },
+                    password:
+                    {
+                        required:'请输入密码',
+                        minlength:'最小长度为2位',
+                        maxlength:'最大长度为15位'
+                    },
+                    subpassword:
+                    {
+                        equalTo:'两次密码输入不一致'
+                    }
+
+            }
+
+           submitHandler:function(form){
+                //通过验证后运行的函数，可以加上表单提交的方法
+                console.log($(form).serialize());
+            }
+
+            invalidHandler:function(event,validator){
+                console.log("错误数："+validator.numberOfInvalids());
+            }
+        });
+
+            $.validator.addMethod("postCode",function(value,element,params){
+                var postCode=/^[0-9]{6}$/;
+                return this.optional(element) ||(postCode.test(value));
+            },"请填写正确的邮政编码")
+
+            $("#checked").click(function(){
+                alert($("#demoPlugin").valid()?"填写正确":"填写有误");
+                //valid()方法是校验整个表单是否有误
+            })
+            })
+
+        </script>
+    </head>
+    <body>
+        <form id="demoPlugin">
+        <legend>用户登录</legend>
+        <p>
+            <label for="username">用户名：
+            <input type="text" name="username" id="userName">
+            </label>
+        </p>
+
+        <p>
+            <label for="password">密码：
+            <input type="password" name="password" id="passWord">
+            </label>
+        </p>
+
+        <p>
+            <label for="subpassword">确认密码：
+            <input type="password" name="subpassword" id="subpassWord">
+            </label>
+        </p>
+
+        <p>
+            <label for="dowload">登录：
+            <input type="submit" value="登录">
+            </label>
+        </p>
+
+        <p>
+        <input type="button" name="check" id="checked" value="检查">
+        </p>
+
+        </form>
+    </body>
+</html>

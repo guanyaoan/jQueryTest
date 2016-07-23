@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8">
+        <style>
+            .left,
+                .right {
+                    width: 300px;
+                    height: 120px;
+                }
+
+                .left div,
+                .right div {
+                    width: 100px;
+                    height: 90px;
+                    padding: 5px;
+                    margin: 5px;
+                    float: left;
+                    border: 1px solid #ccc;
+                }
+
+                .newClass{
+                    background: #bbffaa;
+                }
+
+                .imoocClass{
+                    background: red;
+                }
+        </style>
+        <script src="jquery-3.0.0.js"></script>
+        <script>
+        window.onload=function(){
+            $(".left div").addClass('newClass');//class=left下div元素增加一个新的样式，增加背景颜色
+
+            //通过className(fucntion)方法
+                    //这个函数返回一个或更多用空格隔开的要增加的样式名。
+                    //接收index 参数表示元素在匹配集合中的索引位置和html 参数表示元素上原来的 HTML 内容
+
+            //找到所有的div，然后通过addClass设置颜色，根据返回的className的判断
+            $("div").addClass(function(index,className){
+                if(-1 !==className.indexOf('imooc')){
+                    $(this).addClass('imoocClass'); //this指向匹配元素集合中的当前元素
+                }
+            });
+        }
+        </script>
+    </head>
+    <body>
+        <h2>.addClss()方法</h2>
+           <div class="left">
+               <div class="aaron">
+                   <p>newClass</p>
+               </div>
+               <div class="aaron">
+                   <p>newClass</p>
+               </div>
+           </div>
+           <div class="right">
+               <div class="aa bb imooc">
+                   <article>
+                       <p>imoocClass</p>
+                   </article>
+               </div>
+               <div class="bb cc imooc ">
+                   <article>
+                       <p>imoocClass</p>
+                   </article>
+               </div>
+           </div>
+    </body>
+</html>

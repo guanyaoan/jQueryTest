@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8">
+        <style type="text/css" media="screen">
+            .left div,
+               .right div {
+                   width: 500px;
+                   height: 50px;
+                   padding: 5px;
+                   margin: 5px;
+                   float: left;
+                   border: 1px solid #ccc;
+               }
+
+               .left div {
+                   background: #bbffaa;
+               }
+               em{
+                   font-weight: 900;
+                   color: red;
+               }
+        </style>
+        <script src="jquery-3.0.0.js"></script>
+        <script>
+        window.onload=function(){
+            //监听键盘按键
+                //获取输入的值
+                //keypress()跟keydown()功能一样，唯一区别是：
+                //1.不支持中文
+                    //2.无法响应系统功能键（如delete，backspace）
+                    $(".target1").keypress(function(e){
+                        $("em").text(e.target.value);
+                    })
+        }
+        </script>
+    </head>
+    <body>
+        <h2>keypress()事件</h2>
+           <div class="left">
+               <div class="aaron">监听keypress输入:
+                   <input class="target1" type="text" value="" /><br />
+                   输入中文测试，无法显示:<em></em>
+               </div>
+           </div>
+    </body>
+</html>

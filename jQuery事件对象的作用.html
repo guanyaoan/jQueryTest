@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8">
+        <style type="text/css" media="screen">
+            .left div,
+                .right div {
+                    width: 500px;
+                    height: 100px;
+                    padding: 5px;
+                    margin: 5px;
+                    float: left;
+                    border: 1px solid #ccc;
+                }
+
+                .left div {
+                    background: #bbffaa;
+                }
+
+                .right div {
+                    background: yellow;
+                }
+        </style>
+        <script src="jquery-3.0.0.js"></script>
+        <script>
+        window.onload=function(){
+            //多事件绑定一
+            $("ul").on('click',function(e){
+                alert('触发的元素内容是：'+e.target.textContent);
+            })
+        }
+        </script>
+    </head>
+    <body>
+        <h3>事件委托，通过事件对象区别触发元素</h3>
+            <div class="left">
+                <div class="aaron">
+                    <ul>
+                        <li>点击：触发一</li>
+                        <li>点击：触发二</li>
+                        <li>点击：触发三</li>
+                        <li>点击：触发四</li>
+                    </ul>
+                </div>
+            </div>
+    </body>
+</html>

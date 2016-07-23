@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8">
+        <script src="jquery-3.0.0.js"></script>
+        <style>
+            div{
+                width: 200px;
+                height: 200px;
+                background: #ccc;
+                float: left;
+                margin: 20px;
+            }
+        </style>
+        <script>
+
+         window.onload=function(){
+            //以下为JS原生写法
+        //     var odiv=document.getElementsByTagName("div");
+        //     for(var i=0;i<odiv.length;i++){
+        //         odiv[i].style.border="3px solid blue";
+        //     }
+
+
+        //以下为jQuery写法
+        var $div=$("div");
+        $div.css('border','3px solid red');
+         }
+
+
+
+        </script>
+    </head>
+    <body>
+    <div class="div1"><p>class="div1"</p></div>
+    <div class="div2"><p>class="div2"</p></div>
+    <div class="div3"><p>class="div3"</p></div>
+    <div class="div4"><p>class="div4"</p></div>
+    </body>
+</html>

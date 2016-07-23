@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8">
+        <style type="text/css" media="screen">
+            .left div,
+               .right div {
+                   width: 100%;
+                   height: 50px;
+                   padding: 5px;
+                   margin: 5px;
+                   float: left;
+                   border: 1px solid #ccc;
+               }
+
+               .left div {
+                   background: #bbffaa;
+               }
+
+               .right div {
+                   background: yellow;
+               }
+        </style>
+        <script src="jquery-3.0.0.js"></script>
+        <script>
+        window.onload=function(){
+            //绑定事件
+            var n=0;
+            $(".aaron1").on('mousedown mouseup',function(e){
+                $(this).text('触发类型：'+e.type+(++n)+'次');
+            })
+            //点击删除mousedown事件
+            $("button:first").click(function(){
+                $(".aaron1").off('mousedown');
+            })
+
+            var i=0;
+            $(".aaron2").on('mousedown mouseup',function(e){
+                $(this).text('触发类型：'+e.type+(++i)+'次');
+            })
+            //点击销毁所有事件off
+            $("button:last").click(function(){
+                $(".aaron2").off();
+            })
+
+
+        }
+        </script>
+    </head>
+    <body>
+        <h2>删除事件</h2>
+           <h4>测试一</h4>
+           <div class="left">
+               on('mousedown mouseup')
+               <div class="aaron1">点击触发</div>
+           </div>
+           <button>点击删除mousedown事件</button>
+
+           <h4>测试一</h4>
+              <div class="left">
+                  on('mousedown mouseup')
+                  <div class="aaron2">点击触发</div>
+              </div>
+              <button>点击销毁所有事件off</button>
+    </body>
+</html>
